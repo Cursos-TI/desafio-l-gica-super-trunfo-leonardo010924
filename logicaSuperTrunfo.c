@@ -9,14 +9,14 @@ int main() {
     char estado1, estado2;
     char codigo1[4], codigo2[4];
     char nome_da_cidade1[50], nome_da_cidade2[50];
-    unsigned long int população1, população2;
+    long unsigned int populaçao1, populaçao2;
     float area1, area2;
     float PIB1, PIB2;
     int pontos_turisticos1, pontos_turisticos2;
     float densidade1, densidade2;
     float PIB_per_capita1, PIB_per_capita2;
     float super_poder1, super_poder2;
-    int opção;
+    int opçao;
     
 
    /*imprimindo as variaveis carta 1 
@@ -35,7 +35,7 @@ int main() {
     scanf("%s", nome_da_cidade1);
 
     printf("digite o numero da população: \n");
-    scanf("%lu", &população1);
+    scanf("%lu", &populaçao1);
 
     printf("digite a area em km²: \n");
     scanf("%f", &area1);
@@ -47,10 +47,10 @@ int main() {
     scanf("%d", &pontos_turisticos1);
 
     //calculando a densidade e o pib percapita da carta 1
-    densidade1 = população1 / area1;
-    PIB_per_capita1 = PIB1 * 1000000000 / população1;
+    densidade1 = populaçao1 / area1;
+    PIB_per_capita1 = PIB1 * 1000000000 / populaçao1;
     // calculando super poder 
-    super_poder1 = (float)população1 + area1 + PIB1 + (float)pontos_turisticos1 + PIB_per_capita1 + (1 / densidade1);
+    super_poder1 = (float)populaçao1 + area1 + PIB1 + (float)pontos_turisticos1 + PIB_per_capita1 + (1 / densidade1);
 
 
     /*imprimindo as variaveis carta 1 
@@ -67,7 +67,7 @@ int main() {
     scanf("%s", nome_da_cidade2);
 
     printf("digite o numero da população: \n");
-    scanf("%lu", &população2);
+    scanf("%lu", &populaçao2);
 
     printf("digite a area em km²: \n");
     scanf("%f", &area2);
@@ -79,17 +79,17 @@ int main() {
     scanf("%d", &pontos_turisticos2);
 
     //calculando a densidade e o pib percapita da carta 2
-    densidade2 = população2 / area2;
-    PIB_per_capita2 = PIB2 * 1000000000 / população2;
+    densidade2 = populaçao2 / area2;
+    PIB_per_capita2 = PIB2 * 1000000000 / populaçao2;
     // calculando super poder 
-    super_poder2 = (float)população2 + area2 + PIB2 + (float)pontos_turisticos2 + PIB_per_capita2 + (1 / densidade2);
+    super_poder2 = (float)populaçao2 + area2 + PIB2 + (float)pontos_turisticos2 + PIB_per_capita2 + (1 / densidade2);
 
     // Exibição dos dados carta 2 
     printf("\n--Carta 1--\n");
     printf("Estado: %c\n", estado1);
     printf("Código: %s\n", codigo1);
     printf("Nome da Cidade: %s\n", nome_da_cidade1);
-    printf("População: %lu\n", população1);
+    printf("População: %lu\n", populaçao1);
     printf("Área: %.2f km²\n", area1);
     printf("PIB: %.2f bilhões de reais\n", PIB1);
     printf("Número de Pontos Turísticos: %d\n", pontos_turisticos1);
@@ -102,7 +102,7 @@ int main() {
     printf("Estado: %c\n", estado2);
     printf("Código: %s\n", codigo2);
     printf("Nome da Cidade: %s\n", nome_da_cidade2);
-    printf("População: %lu\n", população2);
+    printf("População: %lu\n", populaçao2);
     printf("Área: %.2f km²\n", area2);
     printf("PIB: %.2f bilhões de reais\n", PIB2);
     printf("Número de Pontos Turísticos: %d\n", pontos_turisticos2);
@@ -119,11 +119,36 @@ int main() {
     printf("4- Pontos Turísticos\n");
     printf("5- Densidade populacional\n");
     printf("Digite sua opção:");
-    scanf("%d", &opção);//usuario digita a opção do menu 
+    scanf("%d", &opçao);//usuario digita a opção do menu 
 
     //exibe o resultado da comparação
     printf("\n--- Resultado da comparação ---\n");
     printf("carta 1: %s\n", nome_da_cidade1);
     printf("carta 2: %s\n",nome_da_cidade2);
 
+    switch (opçao)
+    {
+    case 1:
+      printf("Alternativa: População\n");
+      printf("%s: %lu habitantes\n", nome_da_cidade1, populaçao1);
+    if (populaçao1 > populaçao2){
+      printf("Vencedor:%s\n",nome_da_cidade1);
+      printf("Carta 1 venceu!\n");
+
+    }else if (populaçao2 > populaçao1){
+      printf("Vencedor:%s\n",nome_da_cidade2);
+      printf("Carta 2 venceu!\n");
+      
+    }else{
+      printf("Empate!\n");
+    }
+    break;
     
+    default:{
+       printf("Opção invalida! tente novamente.\n");
+    }
+   
+      break; 
+   }
+   return 0;
+}
